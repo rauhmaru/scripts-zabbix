@@ -24,7 +24,7 @@ echo '{"data":['
 contador=0
 
 for linha in $Scan; do
-    Tmp=$(echo $linha | sed -e 's/^[[:space:]]*//' | sed -r 's/ +/ /g' | grep $procurar)
+    Tmp=$(echo $linha | sed -e 's/^[[:space:]]*//;s/ +/ /g' | grep $procurar)
     if [ $? -eq 0 ]; then
         porta=$(echo -n $Tmp | cut -d "/" -f 1 | tr -d "\n")
         servico=$(echo -n $Tmp | cut -d " " -f 3 | tr -d "\n")
